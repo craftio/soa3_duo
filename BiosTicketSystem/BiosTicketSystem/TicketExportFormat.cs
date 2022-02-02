@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace BiosTicketSystem
 {
-    class TicketExportFormat
+    public enum TicketExportFormat
     {
+        PLAINTEXT,
+        JSON
     }
 }

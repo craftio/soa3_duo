@@ -36,7 +36,7 @@ namespace BiosTicketSystem
             double sum = 0;
             int i = 1;
 
-            String day = "mon";
+            this.day = DateTime.Today.DayOfWeek;  // moeten dit nog aanpassen maar klopt ook niet in word doc die op brightspace staat
 
             foreach (MovieTicket ticket in tickets)
             {
@@ -59,7 +59,7 @@ namespace BiosTicketSystem
             }
 
             //Discount
-            if (day == "sat" || day == "sun")
+            if (day == "Saturday" || day == "Sunday")
             {
                 if (!isStudentOrder && tickets.Count() >= 6)
                 {
@@ -78,7 +78,7 @@ namespace BiosTicketSystem
             }
             else
             {
-                if (day == "mon" || day == "tue" || day == "wed" || day == "thu")
+                if (day == "Monday" || day == "Tuesday" || day == "Wednesday" || day == "Thursday")
                 {
                     return true;
                 }
@@ -89,13 +89,24 @@ namespace BiosTicketSystem
 
         public void Export(TicketExportFormat ticketExportFormat)
         {
+            List<data> _data = new List<data>();
+            _data.Add(new data()
+            {
+                OrderNr = this.orderNr,
+                OrderType = (isStudentOrder ? " (Student)" : "(Regular)"),
+                Tickets = this.tickets,
+                Day = this.day
+            });
+
             if (ticketExportFormat == TicketExportFormat.PLAINTEXT)
             {
-                //Creating a filewriter object
+                string json = JsonConvert.SerializeObject(_data.ToArray());
+                System.IO.File.WriteAllText(@"D:\path.txt", json);
             }
             else if (ticketExportFormat == TicketExportFormat.JSON)
             {
-                //Creating a JSONObject object
+                string json = JsonSerializer.Serialize(_data);
+                File.WriteAllText(@"D:\path.json", json);
             }
         }
     }

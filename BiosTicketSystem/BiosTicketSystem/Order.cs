@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BiosTicketSystem
 {
-    class Order
+    public class Order
     {
         private int orderNr;
         private bool isStudentOrder = false;
@@ -36,7 +36,7 @@ namespace BiosTicketSystem
             double sum = 0;
             int i = 1;
 
-            this.day = DateTime.Today.DayOfWeek;  // moeten dit nog aanpassen maar klopt ook niet in word doc die op brightspace staat
+            this.day = DateTime.Today.DayOfWeek.ToString();  // moeten dit nog aanpassen maar klopt ook niet in word doc die op brightspace staat
 
             foreach (MovieTicket ticket in tickets)
             {

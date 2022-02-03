@@ -53,7 +53,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Fakes Include="Fakes\BiosTicketSystem.fakes" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BiosTicketSystem\BiosTicketSystem.csproj">
+      <Project>{e7e8ae1f-0a4d-4629-b636-daa5dce81298}</Project>
+      <Name>BiosTicketSystem</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

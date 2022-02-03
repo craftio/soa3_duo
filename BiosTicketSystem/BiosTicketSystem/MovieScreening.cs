@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BiosTicketSystem
 {
-    class MovieScreening
+    public class MovieScreening
     {
         private DateTime localDateTime;
         private double pricePerSeat;

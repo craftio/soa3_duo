@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BiosTicketSystem
 {
-    class MovieTicket
+    public class MovieTicket
     {
         private int rowNr;
         private int seatNr;

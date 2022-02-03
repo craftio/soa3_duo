@@ -11,7 +11,6 @@ namespace BiosTicketSystem
         private int orderNr;
         private bool isStudentOrder = false;
         private List<MovieTicket> tickets;
-        private string day;
 
         public Order(int orderNr, bool isStudentOrder)
         {

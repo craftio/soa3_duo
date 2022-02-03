@@ -36,7 +36,7 @@ namespace BiosTicketSystem
             double sum = 0;
             int i = 1;
 
-            String day = "mon";
+            string day = "mon";
 
             foreach (MovieTicket ticket in tickets)
             {

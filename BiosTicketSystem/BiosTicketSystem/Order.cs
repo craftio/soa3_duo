@@ -77,9 +77,7 @@ namespace BiosTicketSystem
             else
             {
                 if (day == "mon" || day == "tue" || day == "wed" || day == "thu")
-                {
                     return true;
-                }
             }
 
             return false;

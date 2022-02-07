@@ -11,7 +11,7 @@ namespace BiosTicketSystem
         private int orderNr;
         private bool isStudentOrder = false;
         private List<MovieTicket> tickets;
-        private string day;
+        private string day = "mon";
 
         public Order(int orderNr, bool isStudentOrder)
         {
@@ -47,9 +47,9 @@ namespace BiosTicketSystem
                     if (ticket.IsPremiumTicket())
                     {
                         if (isStudentOrder)
-                            price = price + 2;
+                            price += 2;
                         else
-                            price = price + 3;
+                            price += 3;
                     }
 
                     sum += price;
@@ -81,7 +81,6 @@ namespace BiosTicketSystem
                 if (day == "Monday" || day == "Tuesday" || day == "Wednesday" || day == "Thursday")
                 {
                     return true;
-                }
             }
 
             return false;

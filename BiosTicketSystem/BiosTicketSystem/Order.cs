@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -87,27 +89,9 @@ namespace BiosTicketSystem
             return false;
         }
 
-        public void Export(TicketExportFormat ticketExportFormat)
+        public void Export(ExportState exportState)
         {
-            /*List<data> _data = new List<data>();
-            _data.Add(new data()
-            {
-                OrderNr = this.orderNr,
-                OrderType = (isStudentOrder ? " (Student)" : "(Regular)"),
-                Tickets = this.tickets,
-                Day = this.day
-            });
-
-            if (ticketExportFormat == TicketExportFormat.PLAINTEXT)
-            {
-                string json = JsonConvert.SerializeObject(_data.ToArray());
-                System.IO.File.WriteAllText(@"D:\path.txt", json);
-            }
-            else if (ticketExportFormat == TicketExportFormat.JSON)
-            {
-                string json = JsonSerializer.Serialize(_data);
-                File.WriteAllText(@"D:\path.json", json);
-            }*/
+            exportState.Export();
         }
     }
 }

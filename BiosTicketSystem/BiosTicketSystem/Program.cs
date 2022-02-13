@@ -27,8 +27,8 @@ namespace BiosTicketSystem
             order.AddSeatReservation(ticket4);
 
             Console.WriteLine("Total price: " + order.CalculatePrice());
-
-            order.Export(TicketExportFormat.PLAINTEXT);
+            order.Export(new JsonState());
+            order.Export(new PlainTextState());
         }
     }
 }

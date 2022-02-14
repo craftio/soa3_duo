@@ -1,22 +1,28 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BiosTicketSystem
 {
-    class Order
+    public class Order
     {
         private int orderNr;
         private bool isStudentOrder = false;
         private List<MovieTicket> tickets;
-        private string day = "mon";
+        private DateTime day = DateTime.Now;
 
-        public Order(int orderNr, bool isStudentOrder)
+        public Order(int orderNr, bool isStudentOrder, DateTime? day = null)
         {
             this.orderNr = orderNr;
             this.isStudentOrder = isStudentOrder;
+
+            if (day != null)
+                this.day = (DateTime)day;
+
             tickets = new List<MovieTicket>();
         }
 
@@ -57,7 +63,7 @@ namespace BiosTicketSystem
             }
 
             //Discount
-            if (day == "sat" || day == "sun")
+            if (day.DayOfWeek == DayOfWeek.Saturday || day.DayOfWeek == DayOfWeek.Sunday)
             {
                 if (!isStudentOrder && tickets.Count() >= 6)
                 {
@@ -76,23 +82,16 @@ namespace BiosTicketSystem
             }
             else
             {
-                if (day == "mon" || day == "tue" || day == "wed" || day == "thu")
+                if (day.DayOfWeek == DayOfWeek.Monday || day.DayOfWeek == DayOfWeek.Tuesday || day.DayOfWeek == DayOfWeek.Wednesday || day.DayOfWeek == DayOfWeek.Thursday)
                     return true;
             }
 
             return false;
         }
 
-        public void Export(TicketExportFormat ticketExportFormat)
+        public void Export(ExportState exportState)
         {
-            if (ticketExportFormat == TicketExportFormat.PLAINTEXT)
-            {
-                //Creating a filewriter object
-            }
-            else if (ticketExportFormat == TicketExportFormat.JSON)
-            {
-                //Creating a JSONObject object
-            }
+            exportState.Export();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BiosTicketSystem
 {
-    class Movie
+    public class Movie
     {
         private string title;
         private List<MovieScreening> screenings;

@@ -17,6 +17,8 @@ jobs:
     - uses: microsoft/setup-msbuild@v1.1
     - name: Setup VSTest Path
       uses: darenm/Setup-VSTest@v1
+    - name: show folder contents (test)
+      run: dir
     - name: Bob the Builder
       run: msbuild BiosTicketSystem.csproj
     - name: Test automatically

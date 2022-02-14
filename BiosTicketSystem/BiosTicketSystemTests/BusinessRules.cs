@@ -15,7 +15,7 @@ namespace BiosTicketSystemTests
         public void EachSecondTicketIsFreeForStudents()
         {
             // Arrange
-            Order order = new Order(999, true, new DateTime(DateTime.Today.Year, 2, 11)); //Is student order
+            Order order = new Order(999, true, new DateTime(DateTime.Today.Year, 2, 11)); //Is student order 
             Order nonStudentOrder = new Order(999, false, new DateTime(DateTime.Today.Year, 2, 11)); //Is NOT student order
 
             Movie JamesBond = new Movie("James Bond");

@@ -2,9 +2,9 @@ name: .NET
 
 on:
   push:
-    branches: [ master ]
+    branches: [ automated-testing ]
   pull_request:
-    branches: [ master ]
+    branches: [ automated-testing ]
 
 jobs:
   build:
@@ -19,4 +19,4 @@ jobs:
       uses: darenm/Setup-VSTest@v1
     - name: Test automatically
       run: |
-        VSTest.Console.exe BiosTicketSystem\BiosTicketSystemTests.dll
+        VSTest.Console.exe BiosTicketSystemTests\BiosTicketSystemTests.dll

@@ -20,7 +20,7 @@ jobs:
     - name: show folder contents (test)
       run: dir
     - name: Bob the Builder
-      run: msbuild BiosTicketSystem.csproj
+      run: msbuild BiosTicketSystem\BiosTicketSystem\BiosTicketSystem.csproj
     - name: Test automatically
       run: |
         VSTest.Console.exe BiosTicketSystemTests.dll

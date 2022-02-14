@@ -2,9 +2,9 @@ name: .NET
 
 on:
   push:
-    branches: [ master ]
+    branches: [ automated-testing ]
   pull_request:
-    branches: [ master ]
+    branches: [ automated-testing ]
 
 jobs:
   build:
@@ -13,10 +13,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Bob the Builder
-      run: msbuild BiosTicketSystem.csproj
+      name: Add msbuild to PATH
+    - uses: microsoft/setup-msbuild@v1.1
     - name: Setup VSTest Path
       uses: darenm/Setup-VSTest@v1
+    - name: show folder contents (test)
+      run: dir
+    - name: restore I guess...
+      run: dotnet restore BiosTicketSystem
+    - name: Bob the Builder
+      run: msbuild BiosTicketSystem\BiosTicketSystem\BiosTicketSystem.csproj
     - name: Test automatically
-      run: |
-        VSTest.Console.exe BiosTicketSystem\BiosTicketSystemTests.dll
+      run: dotnet test BiosTicketSystem

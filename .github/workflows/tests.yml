@@ -24,5 +24,4 @@ jobs:
     - name: Bob the Builder
       run: msbuild BiosTicketSystem\BiosTicketSystem\BiosTicketSystem.csproj
     - name: Test automatically
-      run: |
-        VSTest.Console.exe BiosTicketSystemTests.dll
+      run: dotnet test BiosTicketSystem

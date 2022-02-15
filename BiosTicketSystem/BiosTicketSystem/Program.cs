@@ -6,7 +6,7 @@ namespace BiosTicketSystem
     {
         public static void Main(string[] args)
         {
-            Order order = new Order(999, true);
+            IOrder order = new StudentOrder(999, true);
 
             Movie JamesBond = new Movie("James Bond");
             Movie ChickenLittle = new Movie("Chicken Little");

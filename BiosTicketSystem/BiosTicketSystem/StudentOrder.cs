@@ -1,24 +1,20 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BiosTicketSystem
 {
-    public class Order
+    public class StudentOrder : IOrder
     {
         private int orderNr;
-        private bool isStudentOrder = false;
         private List<MovieTicket> tickets;
         private DateTime day = DateTime.Now;
 
-        public Order(int orderNr, bool isStudentOrder, DateTime? day = null)
+        public StudentOrder(int orderNr, bool isStudentOrder, DateTime? day = null)
         {
             this.orderNr = orderNr;
-            this.isStudentOrder = isStudentOrder;
 
             if (day != null)
                 this.day = (DateTime)day;
@@ -50,10 +46,7 @@ namespace BiosTicketSystem
                 {
                     if (ticket.IsPremiumTicket())
                     {
-                        if (isStudentOrder)
-                            price += 2;
-                        else
-                            price += 3;
+                        price += 2;
                     }
 
                     sum += price;
@@ -62,31 +55,12 @@ namespace BiosTicketSystem
                 i++;
             }
 
-            //Discount
-            if (day.DayOfWeek == DayOfWeek.Saturday || day.DayOfWeek == DayOfWeek.Sunday)
-            {
-                if (!isStudentOrder && tickets.Count() >= 6)
-                {
-                    sum = (sum / 100) * 90;
-                }
-            }
-
             return sum;
         }
 
         public bool IsFree()
         {
-            if (isStudentOrder)
-            {
-                return true;
-            }
-            else
-            {
-                if (day.DayOfWeek == DayOfWeek.Monday || day.DayOfWeek == DayOfWeek.Tuesday || day.DayOfWeek == DayOfWeek.Wednesday || day.DayOfWeek == DayOfWeek.Thursday)
-                    return true;
-            }
-
-            return false;
+            return true;
         }
 
         public void Export(ExportState exportState)

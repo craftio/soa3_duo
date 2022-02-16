@@ -2,9 +2,9 @@
 
 namespace BiosTicketSystem
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Order order = new Order(999, true);
 
@@ -27,8 +27,8 @@ namespace BiosTicketSystem
             order.AddSeatReservation(ticket4);
 
             Console.WriteLine("Total price: " + order.CalculatePrice());
-
-            order.Export(TicketExportFormat.PLAINTEXT);
+            order.Export(new JsonStrategy());
+            order.Export(new PlainTextStrategy());
         }
     }
 }

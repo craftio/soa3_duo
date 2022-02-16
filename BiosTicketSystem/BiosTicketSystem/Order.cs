@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BiosTicketSystem
 {
-    public class Order
+    public class Order : IObserver<MovieTicket>
     {
         private int orderNr;
         private bool isStudentOrder = false;
@@ -106,6 +106,21 @@ namespace BiosTicketSystem
         public void Export(ExportStrategy exportState)
         {
             exportState.Export(this);
+        }
+
+        public void OnNext(MovieTicket value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnError(Exception error)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnCompleted()
+        {
+            throw new NotImplementedException();
         }
     }
 }

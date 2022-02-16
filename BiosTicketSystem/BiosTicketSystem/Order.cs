@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BiosTicketSystem.OrderStates;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,9 +15,11 @@ namespace BiosTicketSystem
         private bool isStudentOrder = false;
         private List<MovieTicket> tickets;
         private DateTime day = DateTime.Now;
+        private OrderState state = null;
 
         public Order(int orderNr, bool isStudentOrder, DateTime? day = null)
         {
+            state = new OnGoingState();
             this.orderNr = orderNr;
             this.isStudentOrder = isStudentOrder;
 
@@ -33,7 +36,8 @@ namespace BiosTicketSystem
 
         public void AddSeatReservation(MovieTicket movieTicket)
         {
-            tickets.Add(movieTicket);
+            //tickets.Add(movieTicket);
+            state.AddSeatReservation(movieTicket, tickets);
         }
 
         public double CalculatePrice()
@@ -89,9 +93,19 @@ namespace BiosTicketSystem
             return false;
         }
 
-        public void Export(ExportState exportState)
+        public void CancelOrder()
         {
-            exportState.Export();
+            state = new CancelledState();
+        }
+
+        public void ConfirmOrder()
+        {
+            state = new ConfirmedState();
+        }
+
+        public void Export(ExportStrategy exportState)
+        {
+            exportState.Export(this);
         }
     }
 }

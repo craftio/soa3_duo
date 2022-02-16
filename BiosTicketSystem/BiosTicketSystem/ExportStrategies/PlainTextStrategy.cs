@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BiosTicketSystem
 {
-    public class PlainTextState : ExportState
+    public class PlainTextStrategy : ExportStrategy
     {
-        public override void Export()
+        public override void Export(Order order)
         {
             Console.WriteLine("PLAIN TEXT EXPORT");
         }

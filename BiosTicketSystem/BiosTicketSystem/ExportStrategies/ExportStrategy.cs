@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace BiosTicketSystem
 {
-    public class JsonState : ExportState
+    public abstract class ExportStrategy
     {
-        public override void Export()
-        {
-            Console.WriteLine("JSON EXPORT");
-        }
+        public abstract void Export(Order order);
     }
 }

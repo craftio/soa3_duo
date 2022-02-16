@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BiosTicketSystem.OrderStates;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,15 +9,19 @@ using System.Threading.Tasks;
 
 namespace BiosTicketSystem
 {
-    public class RegularOrder : IOrder
+    public class Order : IObserver<MovieTicket>
     {
         private int orderNr;
+        private bool isStudentOrder = false;
         private List<MovieTicket> tickets;
         private DateTime day = DateTime.Now;
+        private OrderState state = null;
 
-        public RegularOrder(int orderNr, bool isStudentOrder, DateTime? day = null)
+        public Order(int orderNr, bool isStudentOrder, DateTime? day = null)
         {
+            state = new OnGoingState();
             this.orderNr = orderNr;
+            this.isStudentOrder = isStudentOrder;
 
             if (day != null)
                 this.day = (DateTime)day;
@@ -31,7 +36,8 @@ namespace BiosTicketSystem
 
         public void AddSeatReservation(MovieTicket movieTicket)
         {
-            tickets.Add(movieTicket);
+            //tickets.Add(movieTicket);
+            state.AddSeatReservation(movieTicket, tickets);
         }
 
         public double CalculatePrice()
@@ -48,7 +54,10 @@ namespace BiosTicketSystem
                 {
                     if (ticket.IsPremiumTicket())
                     {
-                        price += 3;
+                        if (isStudentOrder)
+                            price += 2;
+                        else
+                            price += 3;
                     }
 
                     sum += price;
@@ -60,7 +69,7 @@ namespace BiosTicketSystem
             //Discount
             if (day.DayOfWeek == DayOfWeek.Saturday || day.DayOfWeek == DayOfWeek.Sunday)
             {
-                if (tickets.Count() >= 6)
+                if (!isStudentOrder && tickets.Count() >= 6)
                 {
                     sum = (sum / 100) * 90;
                 }
@@ -71,14 +80,47 @@ namespace BiosTicketSystem
 
         public bool IsFree()
         {
-            if (day.DayOfWeek == DayOfWeek.Monday || day.DayOfWeek == DayOfWeek.Tuesday || day.DayOfWeek == DayOfWeek.Wednesday || day.DayOfWeek == DayOfWeek.Thursday)
+            if (isStudentOrder)
+            {
                 return true;
+            }
+            else
+            {
+                if (day.DayOfWeek == DayOfWeek.Monday || day.DayOfWeek == DayOfWeek.Tuesday || day.DayOfWeek == DayOfWeek.Wednesday || day.DayOfWeek == DayOfWeek.Thursday)
+                    return true;
+            }
+
             return false;
         }
 
-        public void Export(ExportState exportState)
+        public void CancelOrder()
         {
-            exportState.Export();
+            state = new CancelledState();
+        }
+
+        public void ConfirmOrder() //AKA paid
+        {
+            state = new ConfirmedState();
+        }
+
+        public void Export(ExportStrategy exportState)
+        {
+            exportState.Export(this);
+        }
+
+        public void OnNext(MovieTicket value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnError(Exception error)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnCompleted()
+        {
+            throw new NotImplementedException();
         }
     }
 }

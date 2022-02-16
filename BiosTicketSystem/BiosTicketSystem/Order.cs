@@ -98,7 +98,7 @@ namespace BiosTicketSystem
             state = new CancelledState();
         }
 
-        public void ConfirmOrder()
+        public void ConfirmOrder() //AKA paid
         {
             state = new ConfirmedState();
         }

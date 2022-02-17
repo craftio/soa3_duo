@@ -1,0 +1,4 @@
+>Klasse diagram & eventueel andere UML (zie ook rubric)
+>Patterns bepalen
+>Vragen opstellen
+>Eventueel begin met de code

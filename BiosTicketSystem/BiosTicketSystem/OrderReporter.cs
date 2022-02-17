@@ -25,19 +25,19 @@ namespace BiosTicketSystem
 
     class Unsubscriber : IDisposable
     {
-        private List<IObserver<Order>> _observers;
-        private IObserver<Order> _observer;
+        private List<IObserver<Order>> observers;
+        private IObserver<Order> observer;
 
         public Unsubscriber(List<IObserver<Order>> observers, IObserver<Order> observer)
         {
-            this._observers = observers;
-            this._observer = observer;
+            this.observers = observers;
+            this.observer = observer;
         }
 
         public void Dispose()
         {
-            if (_observer != null && _observers.Contains(_observer))
-                _observers.Remove(_observer);
+            if (observer != null && observers.Contains(observer))
+                observers.Remove(observer);
         }
     }
 

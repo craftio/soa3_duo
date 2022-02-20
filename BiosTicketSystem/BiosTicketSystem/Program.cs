@@ -38,7 +38,7 @@ namespace BiosTicketSystem
         {
             Facility facilityA = new Facility("Bios Zevenbergen", "Zevenbergen");
             Facility facilityB = new Facility("Bios Breda", "Breda");
-            Facility facilityC = new Facility("Bios Breda", "Breda");
+            Facility facilityC = new Facility("Bios Noordhoek", "Noordhoek");
 
             Room room1 = new Room(1);
             Room room2 = new Room(2);
@@ -93,6 +93,11 @@ namespace BiosTicketSystem
             row3.AddComponent(seat9);
 
             facilityA.PrintContent();
+            Console.WriteLine();
+            facilityB.PrintContent();
+            Console.WriteLine();
+            facilityC.PrintContent();
+            Console.WriteLine();
         }
     }
 }

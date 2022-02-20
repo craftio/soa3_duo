@@ -31,6 +31,9 @@ namespace BiosTicketSystem
 
         public override void PrintContent()
         {
+            if(this is Facility)
+                Console.WriteLine(ToString() + ": ");
+
             foreach(Component component in parts)
             {
                 Console.WriteLine(component.ToString());

@@ -10,7 +10,6 @@ namespace BiosTicketSystem
     {
         protected Component() //final =/ sealed in C#?
         {
-            PrintContent();
         }
 
         public abstract void PrintContent();

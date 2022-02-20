@@ -36,8 +36,6 @@ namespace BiosTicketSystem
 
         public static void CompositePatternCreateSeatsAndLocations()
         {
-            return;
-
             Facility facilityA = new Facility("Bios Zevenbergen", "Zevenbergen");
             Facility facilityB = new Facility("Bios Breda", "Breda");
             Facility facilityC = new Facility("Bios Breda", "Breda");
@@ -94,7 +92,7 @@ namespace BiosTicketSystem
             row3.AddComponent(seat8);
             row3.AddComponent(seat9);
 
-            //facilityA.PrintContent();
+            facilityA.PrintContent();
         }
     }
 }

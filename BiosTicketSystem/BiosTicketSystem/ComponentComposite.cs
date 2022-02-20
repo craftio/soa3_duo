@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 
 namespace BiosTicketSystem
 {
-    public class ComponentComposite : Component
+    public class ComponentComposite : Component //Zitplaats -> rij -> zaal -> vestiging
     {
-        private List<Component> parts;
+        private List<Component> parts = new List<Component>();
         private int? limit = null;
-
-        public ComponentComposite() //Zitplaats -> rij -> zaal -> vestiging
-        {
-            parts = new List<Component>();
-        }
 
         public void AddComponent(Component comp)
         {
@@ -38,7 +33,7 @@ namespace BiosTicketSystem
         {
             foreach(Component component in parts)
             {
-                Console.WriteLine(parts.ToString());
+                Console.WriteLine(component.ToString());
                 component.PrintContent();
             }
         }

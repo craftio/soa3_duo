@@ -9,14 +9,21 @@ namespace BiosTicketSystem
     public class ComponentComposite : Component //Zitplaats -> rij -> zaal -> vestiging
     {
         private List<Component> parts = new List<Component>();
-        private int? limit = null;
+
+        public override int? limit { get; set; }
 
         public void AddComponent(Component comp)
         {
-           if (limit == null || limit > GetSize())
+            if (limit == null || (int)limit > GetSize())
+            {
                 parts.Add(comp);
+            }
             else
-                Console.WriteLine("Not enough space!");
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Not enough space in {0} for an additional {1}!", ToString(), comp.GetType().ToString().Replace(System.Reflection.Assembly.GetEntryAssembly().GetName().Name + ".", ""));
+                Console.ForegroundColor = ConsoleColor.White;
+            }
         }
 
         public Component GetComponent(int i)

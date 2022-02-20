@@ -36,9 +36,9 @@ namespace BiosTicketSystem
 
         public static void CompositePatternCreateSeatsAndLocations()
         {
-            Facility facilityA = new Facility("Bios Zevenbergen", "Zevenbergen");
-            Facility facilityB = new Facility("Bios Breda", "Breda");
-            Facility facilityC = new Facility("Bios Noordhoek", "Noordhoek");
+            Facility facilityA = new Facility("Bios Zevenbergen", "Zevenbergen", 3);
+            Facility facilityB = new Facility("Bios Breda", "Breda", 1); //Not enough space
+            Facility facilityC = new Facility("Bios Noordhoek", "Noordhoek", 3);
 
             Room room1 = new Room(1);
             Room room2 = new Room(2);

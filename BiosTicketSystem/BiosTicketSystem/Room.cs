@@ -10,9 +10,10 @@ namespace BiosTicketSystem
     {
         public int roomNr;
 
-        public Room(int roomNr)
+        public Room(int roomNr, int? limit = null)
         {
             this.roomNr = roomNr;
+            this.limit = limit;
         }
 
         public override string ToString()

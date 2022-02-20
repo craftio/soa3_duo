@@ -11,10 +11,11 @@ namespace BiosTicketSystem
         public string name;
         public string address;
 
-        public Facility(string name, string address)
+        public Facility(string name, string address, int? limit = null)
         {
             this.name = name;
             this.address = address;
+            this.limit = limit;
         }
 
         public override string ToString()

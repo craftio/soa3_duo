@@ -10,9 +10,10 @@ namespace BiosTicketSystem
     {
         public int rowNr;
 
-        public Row(int rowNr)
+        public Row(int rowNr, int? limit = null)
         {
             this.rowNr = rowNr;
+            this.limit = limit;
         }
 
         public override string ToString()

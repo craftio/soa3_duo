@@ -19,7 +19,7 @@ namespace BiosTicketSystem
             MovieScreening movieScreening3 = new MovieScreening(DateTime.Now, 10, ChickenLittle);
             MovieScreening movieScreening4 = new MovieScreening(DateTime.Now, 5, JamesBond);
 
-            MovieTicket ticket1 = new MovieTicket(3, 3, false, movieScreening1);
+            MovieTicket ticket1 = new MovieTicket(3, 3, false, movieScreening1); //TODO: instant of a simple number add the posibility to add true rows and seats types to ticket
             MovieTicket ticket2 = new MovieTicket(8, 7, false, movieScreening2);
             MovieTicket ticket3 = new MovieTicket(4, 8, false, movieScreening3);
             MovieTicket ticket4 = new MovieTicket(6, 1, false, movieScreening4);

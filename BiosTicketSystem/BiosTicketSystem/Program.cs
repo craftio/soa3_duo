@@ -29,6 +29,8 @@ namespace BiosTicketSystem
             Console.WriteLine("Total price: " + order.CalculatePrice());
             order.Export(new JsonStrategy());
             order.Export(new PlainTextStrategy());
+
+            //Composite pattern gebruiken voor zetels & locatie? Geweldig voor het maken van een hierarchie
         }
     }
 }
